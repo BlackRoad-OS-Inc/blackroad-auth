@@ -1,41 +1,48 @@
 <div align="center">
-
 <img src="https://images.blackroad.io/pixel-art/road-logo.png" alt="BlackRoad OS" width="80" />
 
-# blackroad-auth
+# BlackRoad Auth
 
-**BlackRoad Auth — JWT authentication, PBKDF2 hashing, D1 user database.**
+**JWT authentication, PBKDF2 hashing, D1 user database. 42 users.**
 
 [![BlackRoad OS](https://img.shields.io/badge/BlackRoad_OS-Pave_Tomorrow-FF2255?style=for-the-badge&labelColor=000000)](https://blackroad.io)
-[![License](https://img.shields.io/badge/License-Proprietary-FF6B2B?style=for-the-badge&labelColor=000000)](./LICENSE)
-[![Edge AI](https://img.shields.io/badge/Edge_AI-52_TOPS-00D4FF?style=for-the-badge&labelColor=000000)](https://github.com/BlackRoad-OS-Inc)
-
-</div>
-
-<div align="center">
-<sub>Part of the <a href="https://blackroad.io">BlackRoad OS</a> ecosystem — sovereign edge AI infrastructure</sub>
 </div>
 
 ---
 
-## Overview
+## Live
 
-BlackRoad Auth — JWT authentication, PBKDF2 hashing, D1 user database.
+**[auth.blackroad.io](https://auth.blackroad.io)**
 
-## License
+## API
 
-**Proprietary** — Copyright © 2024–2026 [BlackRoad OS, Inc.](https://blackroad.io) All rights reserved.
+```bash
+# Register
+curl -X POST https://auth.blackroad.io/api/register \
+  -d '{"email":"user@example.com","password":"...","name":"User"}'
 
-Founder & CEO: **Alexa Louise Amundson** · Delaware C-Corp
+# Login → JWT
+curl -X POST https://auth.blackroad.io/api/login \
+  -d '{"email":"user@example.com","password":"..."}'
 
-See [LICENSE](./LICENSE) for full terms.
+# Verify token
+curl https://auth.blackroad.io/api/me \
+  -H "Authorization: Bearer $TOKEN"
+```
+
+## Security
+
+- **PBKDF2** password hashing (not bcrypt — runs on Workers)
+- **JWT** tokens with 7-day expiry
+- **D1** user database (SQLite at the edge)
+- **Rate limiting** on login/register endpoints
+
+## Stack
+
+- Cloudflare Workers (JavaScript)
+- D1 for user storage
+- JWT (HS256)
 
 ---
 
-<div align="center">
-
-**BlackRoad OS — Pave Tomorrow.**
-
-[blackroad.io](https://blackroad.io) · [GitHub](https://github.com/BlackRoad-OS-Inc) · [Brand](https://brand.blackroad.io)
-
-</div>
+*Copyright (c) 2024-2026 BlackRoad OS, Inc. All rights reserved.*
