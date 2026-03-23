@@ -1,5 +1,13 @@
 # blackroad-auth
 
+> BlackRoad Auth — JWT authentication, PBKDF2 hashing, D1 user database.
+
+Part of the [BlackRoad OS](https://blackroad.io) ecosystem — [BlackRoad-OS-Inc](https://github.com/BlackRoad-OS-Inc)
+
+---
+
+# blackroad-auth
+
 BlackRoad Auth — JWT authentication, PBKDF2 hashing, D1 user database.
 
 **BlackRoad-OS-Inc** — Corporate root — all IP and governance
